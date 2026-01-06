@@ -1,1 +1,27 @@
 stand.lua
+--// Simple Custom Da Hood Stand Loader
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+repeat task.wait() until LocalPlayer.Character
+
+-- Basic stand notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Stand Loaded",
+    Text = getgenv().Script or "Custom Da Hood Stand",
+    Duration = 5
+})
+
+-- FPS Cap
+if setfpscap and getgenv().FPSCap then
+    setfpscap(getgenv().FPSCap)
+end
+
+-- Example loop (stand logic placeholder)
+RunService.Heartbeat:Connect(function()
+    if getgenv().BlackScreen then
+        LocalPlayer.PlayerGui:FindFirstChildOfClass("ScreenGui").Enabled = false
+    end
+end)
